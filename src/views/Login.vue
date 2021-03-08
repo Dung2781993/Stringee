@@ -1,50 +1,84 @@
+<!-- eslint-disable prettier/prettier -->
 <template>
-  <div class="auth-page">
-    <div class="container page">
-      <div class="row">
-        <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Sign in</h1>
-          <p class="text-xs-center">
-            <router-link :to="{ name: 'register' }">
-              Need an account?
-            </router-link>
-          </p>
-          <ul v-if="errors" class="error-messages">
-            <li v-for="(v, k) in errors" :key="k">{{ k }} {{ v | error }}</li>
-          </ul>
-          <form @submit.prevent="onSubmit(email, password)">
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                v-model="email"
-                placeholder="Email"
-              />
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="password"
-                v-model="password"
-                placeholder="Password"
-              />
-            </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right">
+  <div
+    class="page vertical-align text-center"
+    data-animsition-in="fade-in"
+    data-animsition-out="fade-out"
+  >
+    <div class="page-content vertical-align-middle">
+      <div class="panel">
+        <div class="panel-body">
+          <div class="brand">
+            <img
+              class="brand-img"
+              src="assets//images/logo-blue.png"
+              alt="..."
+            />
+            <h2 class="brand-text font-size-18">Remark</h2>
+          </div>
+          <form method="post" action="#" autocomplete="off">
+            <div
+              class="form-group form-material floating"
+              data-plugin="formMaterial"
+            >
+              <input type="email" class="form-control" name="email" />
+              <label class="floating-label">Email</label>
+            </div>
+            <div
+              class="form-group form-material floating"
+              data-plugin="formMaterial"
+            >
+              <input type="password" class="form-control" name="password" />
+              <label class="floating-label">Password</label>
+            </div>
+            <div class="form-group clearfix">
+              <div
+                class="checkbox-custom checkbox-inline checkbox-primary checkbox-lg float-left"
+              >
+                <input type="checkbox" id="inputCheckbox" name="remember" />
+                <label for="inputCheckbox">Remember me</label>
+              </div>
+              <a class="float-right" href="forgot-password.html"
+                >Forgot password?</a
+              >
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary btn-block btn-lg mt-40"
+            >
               Sign in
             </button>
           </form>
+          <p>
+            Still no account? Please go to
+            <a href="register-v3.html">Sign up</a>
+          </p>
         </div>
       </div>
+      <footer class="page-copyright page-copyright-inverse">
+        <p>WEBSITE BY amazingSurge</p>
+        <p>© 2017. All RIGHT RESERVED.</p>
+        <div class="social">
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-twitter" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-facebook" aria-hidden="true"></i>
+          </a>
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+            <i class="icon bd-google-plus" aria-hidden="true"></i>
+          </a>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
-
 <script>
 import { mapState } from "vuex";
+import axios from "axios";
 import { LOGIN } from "@/store/actions.type";
-
 export default {
-  name: "RwvLogin",
+  name: "Login",
   data() {
     return {
       email: null,

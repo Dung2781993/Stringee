@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import Vue from "vue";
 import Router from "vue-router";
 
@@ -7,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      component: () => import("@/views/Home"),
+      component: () => import("@/views/Login"),
       children: [
         {
           path: "",
@@ -41,9 +42,6 @@ export default new Router({
       path: "/settings",
       component: () => import("@/views/Settings")
     },
-    // Handle child routes with a default, by giving the name to the
-    // child.
-    // SO: https://github.com/vuejs/vue-router/issues/777
     {
       path: "/@:username",
       component: () => import("@/views/Profile"),
